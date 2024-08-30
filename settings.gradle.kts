@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "mango_chat"
 include(":app")
 include(":resources")
+include(":navigation")

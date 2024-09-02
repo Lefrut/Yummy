@@ -1,6 +1,8 @@
 pluginManagement {
     includeBuild("build-logic")
     repositories {
+        maven { setUrl("https://www.jitpack.io") }
+
         google {
             content {
                 includeGroupByRegex("com\\.android.*")

@@ -14,7 +14,9 @@ room = "2.6.1"
 androidTools = "31.6.0"
 ksp = "1.9.0-1.0.13"
 jetbrainsKotlinJvm = "1.9.0"
-
+orbit = "9.0.0"
+hilt = "2.48.1"
+komposecountrycodepicker = "1.2.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -41,10 +43,25 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 
+orbit-core = { group = "org.orbit-mvi", name = "orbit-core", version.ref = "orbit" }
+orbit-viewmodel = { group = "org.orbit-mvi", name = "orbit-viewmodel", version.ref = "orbit" }
+orbit-compose = { group = "org.orbit-mvi", name = "orbit-compose", version.ref = "orbit" }
+
+hilt-android = {group = "com.google.dagger", name = "hilt-android", version.ref="hilt"}
+hilt-compiler = {group = "com.google.dagger", name = "hilt-android-compiler", version.ref="hilt"}
+
+komposecountrycodepicker = { group = "io.github.joelkanyi", name = "komposecountrycodepicker", version.ref = "komposecountrycodepicker" }
+
 [plugins]
+
+com-google-dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+com-google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 mango-chat-android-library = { id = "mango_chat.android.library", version = "unspecified" }
+
 

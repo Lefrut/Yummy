@@ -17,6 +17,7 @@ jetbrainsKotlinJvm = "1.9.0"
 orbit = "9.0.0"
 hilt = "2.48.1"
 komposecountrycodepicker = "1.2.6"
+navigationCompose = "2.7.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,6 +52,8 @@ hilt-android = {group = "com.google.dagger", name = "hilt-android", version.ref=
 hilt-compiler = {group = "com.google.dagger", name = "hilt-android-compiler", version.ref="hilt"}
 
 komposecountrycodepicker = { group = "io.github.joelkanyi", name = "komposecountrycodepicker", version.ref = "komposecountrycodepicker" }
+
+compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 

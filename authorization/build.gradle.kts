@@ -32,9 +32,18 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
+    }
 }
 
 dependencies {
+
+    implementation(libs.compose.navigation)
 
     implementation(libs.orbit.compose)
     implementation(libs.orbit.core)
@@ -63,6 +72,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(project(":navigation"))
     implementation(project(":ui"))
     implementation(project(":resources"))
 }

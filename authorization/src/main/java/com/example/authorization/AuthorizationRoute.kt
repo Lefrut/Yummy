@@ -1,11 +1,20 @@
 package com.example.authorization
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
 fun AuthorizationRoute(navController: NavController) {
+    val viewModel = hiltViewModel<AuthorizationViewModel>()
 
-    AuthorizationScreen()
+    AuthorizationScreen(viewModel = viewModel)
+
+    viewModel.collectSideEffect { sideEffect ->
+        when (sideEffect) {
+            else -> {
+            }
+        }
+    }
 }

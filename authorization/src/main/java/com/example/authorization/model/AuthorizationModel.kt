@@ -1,4 +1,4 @@
-package com.example.authorization
+package com.example.authorization.model
 
 data class AuthorizationState(
     val phoneNumber: String = ""

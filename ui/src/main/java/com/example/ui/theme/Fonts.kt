@@ -11,8 +11,7 @@ data class MangoChatFonts(
     val titleMedium: TextStyle = TextStyle(
         fontFamily = Roboto,
         fontWeight = FontWeight.Bold,
-        fontSize = 20.sp,
-        lineHeight = 28.sp,
+        fontSize = 28.sp,
     ),
     val bodyLarge:  TextStyle = TextStyle(
         fontFamily = Roboto,

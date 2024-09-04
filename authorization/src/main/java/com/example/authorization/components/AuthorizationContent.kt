@@ -1,6 +1,7 @@
 package com.example.authorization.components
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.resources.R
+import com.example.ui.buttons.PrimaryButton
 import com.example.ui.theme.AppColors
 import com.example.ui.theme.AppFonts
 import com.joelkanyi.jcomposecountrycodepicker.component.KomposeCountryCodePicker
@@ -24,7 +26,8 @@ import java.util.Locale
 fun AuthorizationContent(
     modifier: Modifier = Modifier,
     phoneNumber: String,
-    onPhoneNumberChange: (String) -> Unit
+    onPhoneNumberChange: (String) -> Unit,
+    onSendPhoneNumber: (String) -> Unit
 ) {
     val countryCodePickerState = rememberKomposeCountryCodePickerState(
         showCountryCode = true,
@@ -32,9 +35,10 @@ fun AuthorizationContent(
         defaultCountryCode = Locale.getDefault().country,
     )
 
-    Box(
+    Column(
         modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
         KomposeCountryCodePicker(
             state = countryCodePickerState,
@@ -65,6 +69,15 @@ fun AuthorizationContent(
                     style = AppFonts.labelMedium,
                 )
             }
+        )
+        PrimaryButton(
+            text = stringResource(R.string.send),
+            onClick = { onSendPhoneNumber(countryCodePickerState.getCountryPhoneCode()) },
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .height(55.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 25.dp)
         )
         Spacer(Modifier.height(80.dp))
     }

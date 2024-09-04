@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">🥭 Mango chat</string>
     <string name="phone_number">Phone number</string>
     <string name="authorization">Authorization</string>
+    <string name="send">Send</string>
+    <string name="failed_send_code">Failed to send code, please try again.</string>
+    <string name="incorrect_phone_nubmer">The phone number entered is incorrect</string>
+
 </resources>

@@ -35,4 +35,15 @@ class AuthorizationViewModel @Inject constructor(
             postSideEffect(AuthorizationEffect.ShowToast(R.string.incorrect_phone_nubmer))
         }
     }
+
+    fun changeCode(newCode: String) = intent {
+        reduceState {
+            copy(
+                code = newCode
+            )
+        }
+        if (newCode.length == 6 && newCode == "133337") {
+            postSideEffect(AuthorizationEffect.NavigateToRegistration)
+        }
+    }
 }

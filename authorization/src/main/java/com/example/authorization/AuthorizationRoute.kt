@@ -8,6 +8,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.authorization.model.AuthorizationEffect
+import com.example.navigation.NavScreen
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
@@ -27,6 +28,10 @@ fun AuthorizationRoute(navController: NavController) {
                 snackbarHostState.showSnackbar(
                     context.getString(sideEffect.resId)
                 )
+            }
+
+            AuthorizationEffect.NavigateToRegistration -> {
+                navController.navigate(NavScreen.Registration.route)
             }
         }
     }

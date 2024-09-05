@@ -20,7 +20,11 @@ fun AuthorizationScreen(
 
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-        topBar = { AuthorizationTopBar() },
+        topBar = {
+            AuthorizationTopBar(
+                authStage = viewState.authStage
+            )
+        },
         containerColor = Color.Transparent,
 
     ) { paddingValues ->
@@ -28,7 +32,10 @@ fun AuthorizationScreen(
             modifier = Modifier.padding(paddingValues),
             onPhoneNumberChange = viewModel::changePhoneNumber,
             phoneNumber = viewState.phoneNumber,
-            onSendPhoneNumber = viewModel::requestAuthCode
+            onSendPhoneNumber = viewModel::requestAuthCode,
+            authStage = viewState.authStage,
+            onCodeChange = viewModel::changeCode,
+            code = viewState.code
         )
     }
 

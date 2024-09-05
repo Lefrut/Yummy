@@ -1,7 +1,6 @@
 pluginManagement {
     includeBuild("build-logic")
     repositories {
-        maven { setUrl("https://www.jitpack.io") }
 
         google {
             content {
@@ -19,6 +18,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { setUrl("https://jitpack.io") }
     }
 }
 

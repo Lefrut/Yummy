@@ -74,6 +74,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation(libs.otp.compose)
+    implementation(libs.otp.compose)
+
+
     implementation(project(":domain"))
     implementation(project(":navigation"))
     implementation(project(":ui"))

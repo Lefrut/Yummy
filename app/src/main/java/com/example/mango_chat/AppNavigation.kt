@@ -7,19 +7,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.authorization.AuthorizationRoute
-import com.example.navigation.Route
+import com.example.navigation.NavScreen
 
 @Composable
 fun AppNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Route.Authorization.route
+    startDestination: String = NavScreen.Authorization.route
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable(Route.Authorization.route) { AuthorizationRoute(navController) }
+        composable(NavScreen.Authorization.route) { AuthorizationRoute(navController) }
     }
 }

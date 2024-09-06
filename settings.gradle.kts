@@ -1,5 +1,7 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
+
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
@@ -16,8 +18,20 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { setUrl("https://jitpack.io") }
     }
 }
 
 rootProject.name = "mango_chat"
 include(":app")
+include(":resources")
+include(":navigation")
+include(":ui")
+include(":authorization")
+include(":registration")
+include(":chat")
+include(":chats")
+include(":profile")
+include(":edit_profile")
+include(":data")
+include(":domain")

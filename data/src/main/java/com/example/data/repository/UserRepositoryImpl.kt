@@ -1,7 +1,10 @@
 package com.example.data.repository
 
 import com.example.data.service.UserService
+import com.example.data.service.model.CheckAuthCode
 import com.example.data.service.model.Phone
+import com.example.data.service.model.toAuthUser
+import com.example.domain.entity.AuthUser
 import com.example.domain.entity.CodeStatus
 import com.example.domain.repository.UserRepository
 import javax.inject.Inject
@@ -26,6 +29,13 @@ class UserRepositoryImpl @Inject constructor(private val userService: UserServic
             throw Throwable("unknow error")
         }
     }
+
+    override suspend fun checkAuthCode(phone: String, code: String): Result<AuthUser> =
+        kotlin.runCatching {
+            val authTokenResponse = userService.checkAuthCode(CheckAuthCode(phone, code))
+            return@runCatching authTokenResponse?.body()?.toAuthUser()
+                ?: throw IllegalArgumentException("no auth user")
+        }
 
 
 }

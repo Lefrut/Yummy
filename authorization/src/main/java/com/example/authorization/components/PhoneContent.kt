@@ -12,7 +12,9 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.example.resources.R
 import com.example.ui.buttons.PrimaryButton
@@ -21,7 +23,6 @@ import com.example.ui.theme.AppFonts
 import com.joelkanyi.jcomposecountrycodepicker.component.CountryCodePicker
 import com.joelkanyi.jcomposecountrycodepicker.component.KomposeCountryCodePicker
 import com.joelkanyi.jcomposecountrycodepicker.component.rememberKomposeCountryCodePickerState
-import androidx.compose.ui.text.intl.Locale
 
 @Composable
 fun PhoneContent(
@@ -35,6 +36,8 @@ fun PhoneContent(
     ),
     onSendPhoneNumber: (String) -> Unit,
 ) {
+    val keyBoardController = LocalSoftwareKeyboardController.current
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -72,7 +75,10 @@ fun PhoneContent(
         )
         PrimaryButton(
             text = stringResource(R.string.send),
-            onClick = { onSendPhoneNumber(countryCodePickerState.getCountryPhoneCode()) },
+            onClick = {
+                keyBoardController?.hide()
+                onSendPhoneNumber(countryCodePickerState.getCountryPhoneCode())
+            },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .height(55.dp)

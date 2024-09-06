@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.authorization.AuthorizationRoute
 import com.example.navigation.NavScreen
+import com.example.registration.RegistrationRoute
 
 @Composable
 fun AppNavigation(
@@ -21,5 +22,6 @@ fun AppNavigation(
         modifier = modifier
     ) {
         composable(NavScreen.Authorization.route) { AuthorizationRoute(navController) }
+        composable(NavScreen.Registration.route) { RegistrationRoute(navController) }
     }
 }

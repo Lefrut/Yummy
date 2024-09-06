@@ -83,6 +83,7 @@ dependencies {
     implementation(project(":resources"))
     implementation(project(":navigation"))
     implementation(project(":authorization"))
+    implementation(project(":registration"))
     implementation(project(":data"))
     implementation(project(":domain"))
 }

@@ -28,7 +28,12 @@ class AuthorizationViewModel @Inject constructor(
     fun requestAuthCode(countryCode: String) = intent {
         val fullNumber = countryCode + state.phoneNumber
         userInteractor.sendAuthCode(fullNumber).onSuccess {
-            if (it.isSent) reduceState { copy(authStage = AuthorizationStage.Code) }
+            if (it.isSent) reduceState {
+                copy(
+                    authStage = AuthorizationStage.Code,
+                    phoneNumber = fullNumber
+                )
+            }
             else postSideEffect(AuthorizationEffect.ShowToast(R.string.failed_send_code))
         }.onFailure {
             println(it.localizedMessage?.toString())
@@ -42,8 +47,23 @@ class AuthorizationViewModel @Inject constructor(
                 code = newCode
             )
         }
-        if (newCode.length == 6 && newCode == "133337") {
+        if (newCode.length != 6) return@intent
+
+        val user = userInteractor.login(state.phoneNumber, newCode).getOrNull() ?: run {
+            postSideEffect(AuthorizationEffect.ShowToast(R.string.incorrect_code))
+            reduceState {
+                copy(
+                    code = ""
+                )
+            }
+            return@intent
+        }
+
+        if (user.haveUser) {
+            postSideEffect(AuthorizationEffect.NavigateToChats)
+        } else {
             postSideEffect(AuthorizationEffect.NavigateToRegistration)
         }
+
     }
 }

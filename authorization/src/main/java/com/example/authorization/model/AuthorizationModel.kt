@@ -17,6 +17,7 @@ sealed class AuthorizationEffect {
 
     data class ShowToast(@StringRes val resId: Int) : AuthorizationEffect()
     data object NavigateToRegistration : AuthorizationEffect()
+    data object NavigateToChats: AuthorizationEffect()
 
 
 }

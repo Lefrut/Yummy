@@ -33,6 +33,10 @@ fun AuthorizationRoute(navController: NavController) {
             AuthorizationEffect.NavigateToRegistration -> {
                 navController.navigate(NavScreen.Registration.route)
             }
+
+            AuthorizationEffect.NavigateToChats -> {
+                //todo - navigate to chats
+            }
         }
     }
 }

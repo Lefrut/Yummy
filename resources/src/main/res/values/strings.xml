@@ -7,5 +7,6 @@
     <string name="failed_send_code">Failed to send code, please try again.</string>
     <string name="incorrect_phone_nubmer">The phone number entered is incorrect</string>
     <string name="enter_code">Enter the code</string>
+    <string name="incorrect_code">The code entered is incorrect</string>
 
 </resources>

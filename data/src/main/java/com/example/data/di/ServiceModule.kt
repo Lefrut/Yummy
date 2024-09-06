@@ -2,7 +2,9 @@ package com.example.data.di
 
 import com.example.data.service.BASE_URL
 import com.example.data.service.UserService
+import com.example.data.service.interceptors.AuthInterceptor
 import com.example.data.service.interceptors.httpLoggingInterceptor
+import com.example.domain.datastore.DataStoreManager
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -34,10 +36,10 @@ object ServiceModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(): OkHttpClient =
+    fun provideHttpClient(dataStoreManager: DataStoreManager): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor(httpLoggingInterceptor()).build()
-
+            .addInterceptor(httpLoggingInterceptor())
+            .addInterceptor(AuthInterceptor(dataStoreManager)).build()
 
 
 }

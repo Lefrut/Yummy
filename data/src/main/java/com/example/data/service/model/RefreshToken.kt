@@ -7,11 +7,7 @@ import androidx.annotation.Keep
 
 @Keep
 @Serializable
-data class RegisterToken(
-    @SerialName("access_token")
-    val accessToken: String?,
+data class RefreshToken(
     @SerialName("refresh_token")
-    val refreshToken: String?,
-    @SerialName("user_id")
-    val userId: Int?
+    val refreshToken: String?
 )

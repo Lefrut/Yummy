@@ -15,27 +15,19 @@ import javax.inject.Singleton
 class UserRepositoryImpl @Inject constructor(private val userService: UserService) :
     UserRepository {
 
-    override suspend fun sendAuthCode(phone: String): Result<CodeStatus> = kotlin.runCatching {
+    override suspend fun sendAuthCode(phone: String): CodeStatus {
         val response = userService.sendAuthCode(Phone(phone))
         if (response.isSuccessful) {
-            return@runCatching CodeStatus(
-                response.body()?.isSuccess ?: throw Throwable("unknow error")
+            return CodeStatus(
+                response.body()?.isSuccess ?: false
             )
         } else {
-            val errorResponse = userService.sendAuthCodeError(Phone(phone))
-            errorResponse.body()?.let {
-                throw IllegalArgumentException("did not pass validation")
-            }
-            throw Throwable("unknow error")
+            throw Throwable("unknown error")
         }
     }
 
-    override suspend fun checkAuthCode(phone: String, code: String): Result<AuthUser> =
-        kotlin.runCatching {
-            val authTokenResponse = userService.checkAuthCode(CheckAuthCode(phone, code))
-            return@runCatching authTokenResponse?.body()?.toAuthUser()
-                ?: throw IllegalArgumentException("no auth user")
-        }
-
-
+    override suspend fun checkAuthCode(phone: String, code: String): AuthUser {
+        val authTokenResponse = userService.checkAuthCode(CheckAuthCode(phone, code))
+        return (authTokenResponse.body()?.toAuthUser() ?: Throwable("unknown error")) as AuthUser
+    }
 }

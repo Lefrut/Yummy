@@ -8,5 +8,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChatsViewModel @Inject constructor() : MviViewModel<ChatsState, ChatsEffect>(ChatsState()) {
+    fun navigateToChat(name: String) = intent {
+        postSideEffect(ChatsEffect.NavigateToChat(name))
+    }
 
 }

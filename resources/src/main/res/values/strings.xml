@@ -15,4 +15,6 @@
     <string name="_continue_">Continue</string>
     <string name="incorrect_name_or_username">Incorrect name or username entered</string>
     <string name="failed_register">Failed to register, please try again.</string>
+
+    <string name="chats">Chats</string>
 </resources>

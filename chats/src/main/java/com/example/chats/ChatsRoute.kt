@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.chats.model.ChatsEffect
+import com.example.navigation.NavScreen
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
@@ -18,8 +19,7 @@ fun ChatsRoute(navController: NavController) {
     viewModel.collectSideEffect { effect ->
         when (effect) {
             is ChatsEffect.NavigateToChat -> {
-                //todo
-                navController.navigate("")
+                navController.navigate(NavScreen.Chat.createRoute(effect.name))
             }
         }
     }

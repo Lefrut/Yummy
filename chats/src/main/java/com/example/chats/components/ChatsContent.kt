@@ -26,7 +26,7 @@ fun ChatsContent(
     viewState: ChatsState
 ) {
     LazyColumn(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.padding(top = 1.dp).fillMaxSize(),
         contentPadding = PaddingValues(bottom = 30.dp)
     ) {
         item {

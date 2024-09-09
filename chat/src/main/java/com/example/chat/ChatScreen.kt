@@ -1,22 +1,22 @@
-package com.example.chats;
+package com.example.chat;
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.chats.components.ChatsContent
-import com.example.chats.components.ChatsTopBar
-import com.example.chats.model.ChatsState
+import com.example.chat.components.ChatContent
+import com.example.chat.components.ChatTopBar
+import com.example.chat.model.ChatState
 import com.example.ui.theme.AppColors
 
 @Composable
-fun ChatsScreen(viewModel: ChatsViewModel, viewState: ChatsState) {
+fun ChatScreen(viewModel: ChatViewModel, viewState: ChatState) {
     Scaffold(
-        topBar = { ChatsTopBar() },
+        topBar = { ChatTopBar(viewState.name) },
         containerColor = AppColors.background
     ) { paddingValues ->
-        ChatsContent(
+        ChatContent(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize(),

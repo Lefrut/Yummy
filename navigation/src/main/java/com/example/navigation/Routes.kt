@@ -41,5 +41,21 @@ interface NavScreen {
 
     }
 
+    data object Chat : NavScreen {
+        override val route: String
+            get() = "chat"
+
+        const val NAME = "name"
+
+        override val fullRoute: String
+            get() = "$route/{$NAME}"
+
+        fun createRoute(name: String) = "$route/$name"
+
+        override val navAgruments: List<NamedNavArgument>
+            get() = listOf(navArgument(NAME) { type = NavType.StringType })
+
+    }
+
 
 }

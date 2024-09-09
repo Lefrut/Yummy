@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NavController
 import com.example.navigation.NavScreen
 import com.example.registration.model.RegistrationEffect
@@ -15,7 +16,9 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
 @Composable
-fun RegistrationRoute(navController: NavController) {
+fun RegistrationRoute(
+    navController: NavController,
+) {
     val viewModel = hiltViewModel<RegistrationViewModel>()
     val viewState by viewModel.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -36,7 +39,9 @@ fun RegistrationRoute(navController: NavController) {
             }
 
             RegistrationEffect.NavigationToChats -> {
-                navController.navigate(NavScreen.Chats.route)
+                navController.navigate(NavScreen.Chats.route){
+                    navController.popBackStack()
+                }
             }
         }
     }

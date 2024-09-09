@@ -67,7 +67,7 @@ class AuthorizationViewModel @Inject constructor(
         if (user.haveUser) {
             postSideEffect(AuthorizationEffect.NavigateToChats)
         } else {
-            postSideEffect(AuthorizationEffect.NavigateToRegistration)
+            postSideEffect(AuthorizationEffect.NavigateToRegistration(state.phoneNumber))
         }
 
     }

@@ -85,6 +85,10 @@ dependencies {
     implementation(project(":navigation"))
     implementation(project(":authorization"))
     implementation(project(":registration"))
+    implementation(project(":chats"))
+    implementation(project(":chat"))
+    implementation(project(":profile"))
+    implementation(project(":edit_profile"))
     implementation(project(":data"))
     implementation(project(":domain"))
 }

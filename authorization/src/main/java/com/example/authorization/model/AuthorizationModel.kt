@@ -16,7 +16,7 @@ enum class AuthorizationStage {
 sealed class AuthorizationEffect {
 
     data class ShowToast(@StringRes val resId: Int) : AuthorizationEffect()
-    data object NavigateToRegistration : AuthorizationEffect()
+    data class NavigateToRegistration(val phone: String) : AuthorizationEffect()
     data object NavigateToChats: AuthorizationEffect()
 
 

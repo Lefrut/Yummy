@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.authorization.AuthorizationRoute
+import com.example.chats.ChatsRoute
 import com.example.navigation.NavScreen
 import com.example.registration.RegistrationRoute
 
@@ -22,6 +23,7 @@ fun AppNavigation(
         modifier = modifier
     ) {
         composable(NavScreen.Authorization.route) { AuthorizationRoute(navController) }
-        composable(NavScreen.Registration.route) { RegistrationRoute(navController) }
+        composable(NavScreen.Registration.fullRoute) { RegistrationRoute(navController) }
+        composable(NavScreen.Chats.route) { ChatsRoute(navController) }
     }
 }

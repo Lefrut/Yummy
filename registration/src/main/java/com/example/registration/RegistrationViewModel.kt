@@ -1,11 +1,15 @@
 package com.example.registration;
 
+import androidx.lifecycle.SavedStateHandle
 import com.example.domain.usecase.UserInteractor
+import com.example.navigation.NavScreen
 import com.example.registration.model.RegistrationEffect
 import com.example.registration.model.RegistrationState
 import com.example.resources.R
 import com.example.ui.viewmodel.MviViewModel
 import com.example.ui.viewmodel.reduceState
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -16,9 +20,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegistrationViewModel @Inject constructor(
-    private val userInteractor: UserInteractor
-) :
-    MviViewModel<RegistrationState, RegistrationEffect>(RegistrationState()) {
+    private val userInteractor: UserInteractor,
+    savedStateHandle: SavedStateHandle
+) : MviViewModel<RegistrationState, RegistrationEffect>(RegistrationState()) {
+
+
+    init {
+        val phone = savedStateHandle.get<String>(NavScreen.Registration.PHONE) ?: ""
+        intent {
+            reduceState {
+                copy(phoneNumber = phone)
+            }
+        }
+    }
 
     fun changeName(newName: String) = intent {
         if (!isValidName(newName)) return@intent

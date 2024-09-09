@@ -12,4 +12,6 @@ interface UserRepository {
 
     suspend fun checkAuthCode(phone: String, code: String): AuthUser
 
+    suspend fun getUserName(): String
+
 }

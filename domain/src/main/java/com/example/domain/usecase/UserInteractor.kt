@@ -13,7 +13,7 @@ import javax.inject.Singleton
 class UserInteractor @Inject constructor(
     private val userRepository: UserRepository,
     private val dataStoreManager: DataStoreManager
-) : SendAuthPhoneUseCase, LoginUseCase, RegisterUseCase {
+) : SendAuthPhoneUseCase, LoginUseCase, RegisterUseCase, GetUserNameUsecase {
 
     override suspend fun sendAuthCode(phone: String): Result<CodeStatus> {
         val phoneResult = runCatching<CodeStatus> {
@@ -59,6 +59,10 @@ class UserInteractor @Inject constructor(
         }
 
         return@runCatching Unit
+    }
+
+    override suspend fun getUserName(): Result<String> = kotlin.runCatching {
+        return@runCatching userRepository.getUserName()
     }
 
 

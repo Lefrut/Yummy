@@ -21,6 +21,10 @@ fun ChatsRoute(navController: NavController) {
             is ChatsEffect.NavigateToChat -> {
                 navController.navigate(NavScreen.Chat.createRoute(effect.name))
             }
+
+            ChatsEffect.NavigateToProfile -> {
+                navController.navigate(NavScreen.Profile.route)
+            }
         }
     }
 

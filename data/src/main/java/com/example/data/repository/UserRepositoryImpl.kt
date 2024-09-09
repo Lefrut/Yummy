@@ -40,4 +40,8 @@ class UserRepositoryImpl @Inject constructor(private val userService: UserServic
         val authTokenResponse = userService.checkAuthCode(CheckAuthCode(phone, code))
         return (authTokenResponse.body()?.toAuthUser() ?: Throwable("validation error")) as AuthUser
     }
+
+    override suspend fun getUserName(): String {
+        return userService.getUser().body()?.profileData?.username ?: throw Throwable("validation error")
+    }
 }

@@ -10,6 +10,7 @@ import com.example.authorization.AuthorizationRoute
 import com.example.chat.ChatRoute
 import com.example.chats.ChatsRoute
 import com.example.navigation.NavScreen
+import com.example.profile.ProfileRoute
 import com.example.registration.RegistrationRoute
 
 @Composable
@@ -33,5 +34,9 @@ fun AppNavigation(
             route = NavScreen.Chat.fullRoute,
             arguments = NavScreen.Chat.navAgruments
         ) { ChatRoute(navController) }
+
+        composable(NavScreen.Profile.fullRoute) {
+            ProfileRoute(navController)
+        }
     }
 }

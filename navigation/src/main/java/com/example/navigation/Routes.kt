@@ -57,5 +57,11 @@ interface NavScreen {
 
     }
 
+    data object Profile: NavScreen{
+        override val route: String
+            get() = "profile"
+
+    }
+
 
 }

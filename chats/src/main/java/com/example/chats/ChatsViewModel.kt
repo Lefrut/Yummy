@@ -12,4 +12,8 @@ class ChatsViewModel @Inject constructor() : MviViewModel<ChatsState, ChatsEffec
         postSideEffect(ChatsEffect.NavigateToChat(name))
     }
 
+    fun navigateToProfile() = intent {
+        postSideEffect(ChatsEffect.NavigateToProfile)
+    }
+
 }

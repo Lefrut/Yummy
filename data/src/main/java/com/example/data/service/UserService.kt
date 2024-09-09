@@ -9,7 +9,7 @@ import com.example.data.service.model.RegisterToken
 import com.example.data.service.model.SendPhoneResult
 import com.example.data.service.model.ServiceErrorResult
 import com.example.data.service.model.UserProfile
-import com.example.data.service.model.UserRegister
+import com.example.data.service.model.UserRegisterInfo
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -26,8 +26,8 @@ interface UserService {
     @POST(Endpoints.POST_CHECK_AUTH_CODE)
     suspend fun checkAuthCode(@Body checkAuthCode: CheckAuthCode): Response<AuthToken>
 
-    @GET(Endpoints.POST_REGISTER)
-    suspend fun registerUser(@Body userRegister: UserRegister): Response<UserRegister>
+    @POST(Endpoints.POST_REGISTER)
+    suspend fun registerUser(@Body userRegisterInfo: UserRegisterInfo): Response<RegisterToken>
 
     @Authenticated
     @GET(Endpoints.GET_USER)

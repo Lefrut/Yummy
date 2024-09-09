@@ -13,7 +13,7 @@ import javax.inject.Singleton
 class UserInteractor @Inject constructor(
     private val userRepository: UserRepository,
     private val dataStoreManager: DataStoreManager
-) : SendAuthPhoneUseCase, LoginUseCase {
+) : SendAuthPhoneUseCase, LoginUseCase, RegisterUseCase {
 
     override suspend fun sendAuthCode(phone: String): Result<CodeStatus> {
         val phoneResult = runCatching<CodeStatus> {
@@ -46,6 +46,19 @@ class UserInteractor @Inject constructor(
             }
         }
         return@runCatching User(authUser.haveUser, authUser.userId)
+    }
+
+    override suspend fun register(phone: String, name: String, username: String): Result<Unit> = kotlin.runCatching {
+        val registerUser = userRepository.register(phone, name, username)
+        if(registerUser.refreshToken.isBlank() || registerUser.accessToken.isBlank()) throw Throwable("validation error")
+
+        dataStoreManager.apply {
+            saveUserId(registerUser.userId)
+            saveRefreshToken(registerUser.refreshToken)
+            saveToken(registerUser.accessToken)
+        }
+
+        return@runCatching Unit
     }
 
 

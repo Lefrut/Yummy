@@ -12,6 +12,11 @@ interface NavScreen {
     data object Registration: NavScreen {
         override val route: String
             get() = "registration"
+    }
+
+    data object Chats: NavScreen {
+        override val route: String
+            get() = "chats"
 
     }
 

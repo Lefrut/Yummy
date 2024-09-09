@@ -31,7 +31,9 @@ fun AuthorizationRoute(navController: NavController) {
             }
 
             AuthorizationEffect.NavigateToRegistration -> {
-                navController.navigate(NavScreen.Registration.route)
+                navController.navigate(NavScreen.Registration.route) {
+                    navController.popBackStack()
+                }
             }
 
             AuthorizationEffect.NavigateToChats -> {

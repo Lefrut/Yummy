@@ -1,4 +1,4 @@
-package com.example.authorization.components
+package com.example.registration.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,18 +9,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.authorization.model.AuthorizationStage
 import com.example.resources.R
 import com.example.ui.theme.AppColors
 import com.example.ui.theme.AppFonts
 
 @Composable
-fun AuthorizationTopBar(modifier: Modifier = Modifier, authStage: AuthorizationStage) {
+fun RegistrationTopBar(modifier: Modifier = Modifier) {
     Text(
-        text = when (authStage) {
-            AuthorizationStage.Phone -> stringResource(R.string.authorization)
-            AuthorizationStage.Code -> stringResource(R.string.enter_code)
-        },
+        text = stringResource(R.string.registration),
         modifier = modifier
             .fillMaxWidth()
             .padding(18.dp)

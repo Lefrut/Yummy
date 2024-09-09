@@ -18,6 +18,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.example.resources.R
 import com.example.ui.buttons.PrimaryButton
+import com.example.ui.textfields.countryCodePickerColors
 import com.example.ui.theme.AppColors
 import com.example.ui.theme.AppFonts
 import com.joelkanyi.jcomposecountrycodepicker.component.CountryCodePicker
@@ -53,17 +54,7 @@ fun PhoneContent(
                 onPhoneNumberChange(s)
             },
             textStyle = AppFonts.bodyMedium.copy(color = AppColors.onPrimary),
-            colors = TextFieldDefaults.colors(
-                focusedTextColor = AppColors.onPrimary,
-                unfocusedTextColor = AppColors.onPrimary,
-                focusedIndicatorColor = AppColors.primary,
-                unfocusedIndicatorColor = AppColors.secondary,
-                unfocusedContainerColor = AppColors.background,
-                focusedContainerColor = AppColors.background,
-                focusedPlaceholderColor = AppColors.onPrimary.copy(alpha = 0.7f),
-                unfocusedPlaceholderColor = AppColors.onPrimary.copy(alpha = 0.7f),
-                cursorColor = AppColors.onPrimary
-            ),
+            colors = TextFieldDefaults.countryCodePickerColors(),
             countrySelectionDialogContentColor = AppColors.onPrimary,
             countrySelectionDialogContainerColor = AppColors.background,
             placeholder = {
@@ -73,6 +64,7 @@ fun PhoneContent(
                 )
             }
         )
+
         PrimaryButton(
             text = stringResource(R.string.send),
             onClick = {
@@ -81,8 +73,6 @@ fun PhoneContent(
             },
             modifier = Modifier
                 .padding(top = 16.dp)
-                .height(55.dp)
-                .fillMaxWidth()
                 .padding(horizontal = 25.dp)
         )
         Spacer(Modifier.height(80.dp))

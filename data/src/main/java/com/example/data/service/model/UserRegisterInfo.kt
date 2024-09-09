@@ -7,7 +7,7 @@ import androidx.annotation.Keep
 
 @Keep
 @Serializable
-data class UserRegister(
+data class UserRegisterInfo(
     @SerialName("name")
     val name: String?,
     @SerialName("phone")

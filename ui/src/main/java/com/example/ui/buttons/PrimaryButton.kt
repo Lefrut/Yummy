@@ -6,6 +6,8 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Text
@@ -36,7 +38,8 @@ fun PrimaryButton(
     )
 
     FilledTonalButton(
-        modifier = modifier,
+        modifier = modifier.height(55.dp)
+            .fillMaxWidth(),
         onClick = onClick,
         shape = AppShapes.medium,
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),

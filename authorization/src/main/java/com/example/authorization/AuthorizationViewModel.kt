@@ -8,6 +8,8 @@ import com.example.resources.R
 import com.example.ui.viewmodel.MviViewModel
 import com.example.ui.viewmodel.reduceState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,14 +18,17 @@ class AuthorizationViewModel @Inject constructor(
 ) : MviViewModel<AuthorizationState, AuthorizationEffect>(AuthorizationState()) {
 
 
-    fun changePhoneNumber(newPhoneNumber: String) =
-        intent {
+    private val changePhoneMutex = Mutex()
+
+    fun changePhoneNumber(newPhoneNumber: String) = intent {
+        changePhoneMutex.withLock {
             reduceState {
                 copy(
                     phoneNumber = newPhoneNumber
                 )
             }
         }
+    }
 
     fun requestAuthCode(countryCode: String) = intent {
         val fullNumber = countryCode + state.phoneNumber
